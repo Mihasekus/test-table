@@ -1,0 +1,53 @@
+<table>
+  <thead>
+  <tr>
+    <td><button (click)="addRow()">Add</button></td>
+    <td><button (click)="onSave()">Save</button></td>
+    <!--<td><label> page size-->
+      <!--<input type="text" [(ngModel)]="tableData.limit">-->
+    <!--</label></td>-->
+    <!--<td><label> page number-->
+      <!--<input [(ngModel)]="tableData.offset">-->
+    <!--</label></td>-->
+  </tr>
+  <tr>
+    <th></th>
+    <th>Animal Id</th>
+    <th>Event Id</th>
+    <th>Cow Id</th>
+    <th>Age(days)</th>
+    <th>Days In Lactation</th>
+    <th>Health</th>
+    <th>Lactation Number</th>
+    <th>Minimal Value Time</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Type</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngIf="!tableData?.result?.length" style="pointer-events:none;">
+    <td>
+      No data available in table
+    </td>
+  </tr>
+<ng-container *ngIf="tableData?.result?.length">
+  <tr
+      *ngFor="let data of tableData.result; let i = index">
+      <td><button [disabled]="!data.deletable" (click)="deleteRow(i)">delete</button></td>
+      <td>{{data?.animalId}}</td>
+      <td>{{data?.eventId}}</td>
+      <td>{{data?.cowId}}</td>
+      <td><input type="text" [(ngModel)]="data.ageInDays"></td>
+      <td><input [(ngModel)]="data.daysInLactation"></td>
+      <td><input [(ngModel)]="data.healthIndex"></td>
+      <td><input [(ngModel)]="data.lactationNumber"></td>
+      <td><input class="wide-input" (ngModelChange)="data.minValueDateTime = $event" [ngModel]="data.minValueDateTime  | date"></td>
+      <td><input class="wide-input" (ngModelChange)="data.startDateTime = $event" [ngModel]="data.startDateTime | date "></td>
+      <td><input class="wide-input" (ngModelChange)="data.endDate = $event" [ngModel]="data.endDate  | date"></td>
+      <td><input class="wide-input" [(ngModel)]="data.type"></td>
+  </tr>
+</ng-container>
+  </tbody>
+</table>
