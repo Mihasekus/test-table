@@ -3,12 +3,12 @@
   <tr>
     <td><button (click)="addRow()">Add</button></td>
     <td><button (click)="onSave()">Save</button></td>
-    <!--<td><label> page size-->
-      <!--<input type="text" [(ngModel)]="tableData.limit">-->
-    <!--</label></td>-->
-    <!--<td><label> page number-->
-      <!--<input [(ngModel)]="tableData.offset">-->
-    <!--</label></td>-->
+    <td><label> page size
+    <input disabled type="text" [(ngModel)]="tableData.limit">
+    </label></td>
+    <td><label> page number
+      <input disabled [(ngModel)]="tableData.offset">
+    </label></td>
   </tr>
   <tr>
     <th></th>

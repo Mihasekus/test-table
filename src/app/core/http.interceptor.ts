@@ -15,8 +15,12 @@ export class Interceptor implements HttpInterceptor {
   ) {}
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    if(req.body){
-      this.data=JSON.stringify(req.body)
+    //this pagination logic should be on backend side so I disabled it for this table
+    // const params = req.url.split('=');
+    // const limit = +params[1].split('?')[0];
+    // const offset = +params[2];
+    if (req.body) {
+      this.data = JSON.stringify(req.body);
     }
     return of(new HttpResponse(
       { status: 200, body: JSON.parse(this.data) }));

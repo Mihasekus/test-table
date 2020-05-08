@@ -7,14 +7,15 @@ import {TableService} from './table.service';
 })
 export class TableComponent implements OnInit {
 
-  tableData;
+  tableData: any;
 
   constructor( private tableService: TableService
   ) {
   }
 
   ngOnInit() {
-    this.tableService.getData().subscribe((res: any) => {
+    this.tableService.getData(this.tableData ? this.tableData.limit : 100,
+      this.tableData ? this.tableData.offset : 0).subscribe((res: any) => {
       this.tableData = res;
     });
   }

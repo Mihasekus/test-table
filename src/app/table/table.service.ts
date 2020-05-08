@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class TableService {
@@ -6,8 +6,8 @@ export class TableService {
   constructor(private _http: HttpClient) {
   }
 
-  getData() {
-    return this._http.get('get');
+  getData(limit?, offset?) {
+    return this._http.get('get?limit=' + limit + '?offset=' + offset);
   }
 
 
